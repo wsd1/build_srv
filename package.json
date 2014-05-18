@@ -9,6 +9,7 @@
   "author": "",
   "license": "Private",
   "dependencies":{
-    "formidable": "*"
+    "formidable": "*",
+    "express": "*"
   }
 }
