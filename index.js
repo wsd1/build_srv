@@ -105,6 +105,7 @@ app.post('/upload', function(req, res) {
 
 	//save to build_dir
 	form.on('fileBegin', function(name, file) {
+      if(file.name)
 		file.path = build_dir + file.name;
 	});
 
