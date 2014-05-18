@@ -75,11 +75,18 @@ app.post('/upload', function(req, res) {
         var cmd = params.join(' ');
         console.log('2.Issue ' + cmd);
         exec(cmd, function(err, stdout, stderr) {
+
+            res.writeHead(200, {'content-type': 'text/html'});
+            res.write(
+                '<h1>Select and upload addon source</h1>' +
+                '<form action="/upload" enctype="multipart/form-data" method="post">'+
+                '<input type="file" name="upload" multiple="multiple">'+
+                '<input type="submit" value="Upload">'+
+                '</form>'
+            );
             if (err) {
-                res.writeHead(200, {'content-type': 'text/html'});
                 res.end(err.message);
             } else {
-                res.writeHead(200, {'content-type': 'text/html'});
                 res.write('<p>build_info: ' + stdout + '</p>');
                 res.write('<p>build_warn: ' + stderr + '</p>');
                 res.end('<h3>Success!! <a href="/build/' + output + '"> download it.</a></h3>');
