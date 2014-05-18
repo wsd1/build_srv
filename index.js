@@ -41,6 +41,10 @@ app.post('/upload', function(req, res) {
 
 	var form = new formidable.IncomingForm();
 	form.parse(req, function(err, fields, files){
+      
+      
+      	console.log(files);
+ 
 		var src = files.upload.name;
 
         console.log('1.submit ' + src + '\r\n');
