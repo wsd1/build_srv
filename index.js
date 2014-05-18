@@ -89,7 +89,11 @@ app.post('/upload', function(req, res) {
             } else {
                 res.write('<p>build_info: ' + stdout + '</p>');
                 res.write('<p>build_warn: ' + stderr + '</p>');
-                res.end('<h3>Success!! Download <a href="/build/' + output + '">' + output + '</a></h3>');
+                res.end(
+                  '<h3>Success!! Download <a href="/build/' + output + '">' + 
+                  output + '</a></h3>' +
+                  '<p>' + Date() + '</p>'
+                );
             }
         });
 	});
