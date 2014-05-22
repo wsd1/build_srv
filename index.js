@@ -8,6 +8,7 @@ var url = require('url'),
 	app = express();
 
 var build_dir = "/mnt/tmp/"
+var glb_cnt = 0;
 
 // Convenience for allowing CORS on routes - GET only
 app.all('*', function (req, res, next) {
@@ -89,6 +90,8 @@ app.post('/upload', function(req, res) {
                 '<input type="submit" value="Upload">'+
                 '</form>'
             );
+            res.write('<h2>build_cnt: ' + glb_cnt++ + '</h2>');
+
             if (err) {
                 res.end(err.message);
             } else {
